@@ -28,8 +28,5 @@ cx_one_cloudformation_stack = CxOneCloudformationStack(app, "CxOneCloudformation
     )
 
 default_tags = cdk.Tags.of(cx_one_cloudformation_stack)
-default_tags.add("CloudFormation", "true")
-default_tags.add("DeploymentID", deployment_id)
-default_tags.add("Owner", "CxOne")
 
 app.synth()
