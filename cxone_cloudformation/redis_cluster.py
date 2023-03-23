@@ -17,7 +17,7 @@ def get_redis_cluster(scope: Construct):
         id="MyCfnCacheCluster",
         cache_node_type="cache.t4g.medium",
         engine="Redis",
-        num_cache_nodes=4,
+        num_cache_nodes=1,
         auto_minor_version_upgrade=False,
         cache_security_group_names=[internal_security_group_name],
         cluster_name=deployment_id,
