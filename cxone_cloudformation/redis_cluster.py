@@ -35,7 +35,7 @@ def get_redis_cluster(scope: Construct, vpc: ec2.Vpc, redis_security_group):
         port=6379,
         preferred_maintenance_window="sun:23:00-mon:01:30",
         transit_encryption_enabled=False,
-        vpc_security_group_ids=[redis_security_group.redis_security_group]
+        vpc_security_group_ids=[redis_security_group.security_group_id]
     )
 
     cfn_cache_cluster.apply_removal_policy(RemovalPolicy.DESTROY)
