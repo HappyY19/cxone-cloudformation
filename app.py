@@ -3,11 +3,13 @@ import os
 
 import aws_cdk as cdk
 
-from cxone_cloudformation.cxone_cloudformation_stack import CxoneCloudformationStack
-
+from cxone_cloudformation.cxone_cloudformation_stack import CxOneCloudformationStack
+from cxone_cloudformation.customized_parameters import (
+    deployment_id
+)
 
 app = cdk.App()
-CxoneCloudformationStack(app, "CxoneCloudformationStack",
+cx_one_cloudformation_stack = CxOneCloudformationStack(app, "CxOneCloudformationStack",
     # If you don't specify 'env', this stack will be environment-agnostic.
     # Account/Region-dependent features and context lookups will not work,
     # but a single synthesized template can be deployed anywhere.
@@ -24,5 +26,10 @@ CxoneCloudformationStack(app, "CxoneCloudformationStack",
 
     # For more information, see https://docs.aws.amazon.com/cdk/latest/guide/environments.html
     )
+
+default_tags = cdk.Tags.of(cx_one_cloudformation_stack)
+default_tags.add("CloudFormation", "true")
+default_tags.add("DeploymentID", deployment_id)
+default_tags.add("Owner", "CxOne")
 
 app.synth()
