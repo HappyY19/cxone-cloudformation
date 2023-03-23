@@ -26,8 +26,6 @@ def get_redis_cluster(scope: Construct):
         network_type="ipv4",
         port=6379,
         preferred_maintenance_window="sun:23:00-mon:01:30",
-        snapshot_retention_limit=2,
-        snapshot_window="18:30-19:30",
         transit_encryption_enabled=False,
     )
 
