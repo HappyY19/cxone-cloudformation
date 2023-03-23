@@ -50,12 +50,12 @@ def get_vpc(scope: Construct):
             ec2.SubnetConfiguration(
                 cidr_mask=private_subnet_cidr_mask,
                 name="-".join([deployment_id, "private", availability_zones[0]]),
-                subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT
+                subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS
             ),
             ec2.SubnetConfiguration(
                 cidr_mask=private_subnet_cidr_mask,
                 name="-".join([deployment_id, "private", availability_zones[1]]),
-                subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT
+                subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS
             ),
             ec2.SubnetConfiguration(
                 cidr_mask=isolated_subnet_cidr_mask,

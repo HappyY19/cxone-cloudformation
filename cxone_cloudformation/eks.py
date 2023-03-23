@@ -45,7 +45,7 @@ def get_eks(scope: Construct, cluster_name, vpc, kms,
         output_cluster_name=True,
         output_config_command=True,
         vpc=vpc,
-        vpc_subnets=[ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT)],
+        vpc_subnets=[ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS)],
     )
 
     for node_group in ["ast_nodes", "sast_nodes", "sast_nodes_medium", "sast_nodes_large", "sast_nodes_extra_large",
@@ -89,7 +89,7 @@ def get_eks(scope: Construct, cluster_name, vpc, kms,
             spot_price=None,
             termination_policies=None,
             update_policy=None,
-            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT),
+            vpc_subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
         )
 
         eks_cluster.add_nodegroup_capacity(
@@ -106,7 +106,7 @@ def get_eks(scope: Construct, cluster_name, vpc, kms,
             node_role=None,
             release_version=None,
             remote_access=None,
-            subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_NAT),
+            subnets=ec2.SubnetSelection(subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS),
             tags=None,
             taints=None,
         )
