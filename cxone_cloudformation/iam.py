@@ -345,5 +345,5 @@ def get_aws_ebs_csi_driver_role(scope: Construct):
         description="IRSA role for ebs csi driver role",
         role_name="-".join(["aws_ebs_csi_driver_role", iam_name_suffix])
     )
-    role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("AmazonEBSCSIDriverPolicy"))
+    role.add_managed_policy(iam.ManagedPolicy.from_aws_managed_policy_name("service-role/AmazonEBSCSIDriverPolicy"))
     return role
