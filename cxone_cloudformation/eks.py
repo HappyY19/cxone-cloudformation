@@ -223,17 +223,17 @@ def get_eks(scope: Construct, cluster_name, vpc, kms,
     coredns_addon = eks.CfnAddon(scope, "CoreDnsCfnAddon",
                                  addon_name="coredns",
                                  cluster_name=cluster_name,
-                                 resolve_conflicts="Overwrite",
+                                 resolve_conflicts="OVERWRITE",
                                  )
 
     kube_proxy_addon = eks.CfnAddon(scope, "KubeProxyCfnAddon",
                                     addon_name="kube-proxy",
                                     cluster_name=cluster_name,
-                                    resolve_conflicts="Overwrite",
+                                    resolve_conflicts="OVERWRITE",
                                     )
 
     vpc_cni_addon = eks.CfnAddon(scope, "VpcCniCfnAddon",
                                  addon_name="vpc-cni",
                                  cluster_name=cluster_name,
-                                 resolve_conflicts="Overwrite",
+                                 resolve_conflicts="OVERWRITE",
                                  )
