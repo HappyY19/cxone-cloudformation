@@ -43,7 +43,7 @@ class CxOneCloudformationStack(Stack):
         s3_buckets = get_all_s3_buckets(scope=self)
         vpc = get_vpc(scope=self)
         external_security_group, internal_security_group = get_security_groups(scope=self, vpc=vpc)
-        redis_cluster = get_redis_cluster(scope=self)
+        redis_cluster = get_redis_cluster(scope=self, vpc=vpc, redis_security_group=internal_security_group)
         rds_cluster = get_rds_cluster(
             scope=self,
             vpc=vpc,
