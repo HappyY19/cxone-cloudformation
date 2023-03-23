@@ -39,34 +39,22 @@ def get_vpc(scope: Construct):
         subnet_configuration=[
             ec2.SubnetConfiguration(
                 cidr_mask=public_subnet_cidr_mask,
-                name="-".join([deployment_id, "public", availability_zones[0]]),
+                name="-".join([deployment_id, "public"]),
                 subnet_type=ec2.SubnetType.PUBLIC
             ),
-            ec2.SubnetConfiguration(
-                cidr_mask=public_subnet_cidr_mask,
-                name="-".join([deployment_id, "public", availability_zones[1]]),
-                subnet_type=ec2.SubnetType.PUBLIC
-            ),
+
             ec2.SubnetConfiguration(
                 cidr_mask=private_subnet_cidr_mask,
-                name="-".join([deployment_id, "private", availability_zones[0]]),
+                name="-".join([deployment_id, "private"]),
                 subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS
             ),
-            ec2.SubnetConfiguration(
-                cidr_mask=private_subnet_cidr_mask,
-                name="-".join([deployment_id, "private", availability_zones[1]]),
-                subnet_type=ec2.SubnetType.PRIVATE_WITH_EGRESS
-            ),
+
             ec2.SubnetConfiguration(
                 cidr_mask=isolated_subnet_cidr_mask,
-                name="-".join([deployment_id, "db", availability_zones[0]]),
+                name="-".join([deployment_id, "db"]),
                 subnet_type=ec2.SubnetType.PRIVATE_ISOLATED
             ),
-            ec2.SubnetConfiguration(
-                cidr_mask=isolated_subnet_cidr_mask,
-                name="-".join([deployment_id, "db", availability_zones[1]]),
-                subnet_type=ec2.SubnetType.PRIVATE_ISOLATED
-            ),
+
         ],
         vpc_name=deployment_id,
     )
